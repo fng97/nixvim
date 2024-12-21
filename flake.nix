@@ -1,20 +1,47 @@
 {
   inputs.nixvim.url = "github:nix-community/nixvim";
 
-  outputs = { self, nixvim, flake-parts, }@inputs:
-    let config = { colorschemes.gruvbox.enable = true; };
+  outputs = { self, nixvim, flake-parts, ... }@inputs:
+    let
+      config = {
+        globals.mapleader = " ";
+
+        opts = {
+          number = true;
+          relativenumber = true;
+        };
+
+        colorschemes.gruvbox.enable = true;
+
+        plugins = {
+          treesitter.enable = true;
+          telescope.enable = true;
+          which-key.enable = true;
+          bufferline.enable = true;
+          lualine.enable = true;
+        };
+      };
     in flake-parts.lib.mkFlake { inherit inputs; } {
       systems =
         [ "aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux" ];
 
       perSystem = { pkgs, system, ... }:
         let
+          nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages."${system}";
           nvim = nixvim'.makeNixvim config;
         in {
           packages = {
             inherit nvim;
             default = nvim;
+          };
+
+          checks = {
+            # run `nix flake check . --all-systems` to verify configs are not broken
+            default = nixvimLib.check.mkTestDerivationFromNvim {
+              name = "Nixvim flake validation";
+              nvim = nvim;
+            };
           };
         };
     };
