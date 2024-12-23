@@ -1,17 +1,10 @@
-# Nixvim template
+# `nixvim`
 
-This template gives you a good starting point for configuring nixvim standalone.
+My neovim configuration as a nix flake :snowflake:
 
-## Configuring
+Run it locally with: `nix run .` or `nix run . -- {file}`
 
-To start configuring, just add or modify the nix files in `./config`.
-If you add a new configuration file, remember to add it to the
-[`config/default.nix`](./config/default.nix) file
+Run it elsewhere with: `nix run github:fng97/nixvim` or
+`nix run github:fng97/nixvim -- {file}`
 
-## Testing your new configuration
-
-To test your configuration simply run the following command
-
-```
-nix run .
-```
+Validate it with: `nix flake check . --all-systems`

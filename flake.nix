@@ -1,3 +1,11 @@
+# TODO:
+# 
+# - format on save
+# - tab multiple lines without having to reselect
+#
+# FIXME:
+# - leader key broken?
+
 {
   inputs.nixvim.url = "github:nix-community/nixvim";
 
@@ -5,20 +13,54 @@
     let
       config = {
         globals.mapleader = " ";
+        globals.maplocalleader = " ";
 
         opts = {
           number = true;
           relativenumber = true;
+          showmode = false; # covered by lualine
+          ignorecase = true; # ignore case...
+          smartcase = true; # unless search contains capitals
         };
+
+        keymaps = [{
+          mode = "n";
+          key = "<Esc>";
+          action = "<cmd>nohlsearch<CR>";
+        }];
+
+        autoCmd = [{
+          event = "TextYankPost";
+          pattern = "*";
+          command = "lua vim.highlight.on_yank{timeout=150}";
+        }];
 
         colorschemes.gruvbox.enable = true;
 
         plugins = {
           treesitter.enable = true;
-          telescope.enable = true;
-          which-key.enable = true;
-          bufferline.enable = true;
           lualine.enable = true;
+          web-devicons.enable = true;
+          nvim-autopairs.enable = true;
+          conform-nvim.enable = true;
+
+          # NOT WORKING
+          # nix.enable = true;
+          # zig.enable = true;
+	  # clangd-extensions.enable = true;
+          # telescope.enable = true;
+          # which-key.enable = true;
+          # bufferline.enable = true;
+          # lsp-format.enable = true;
+        };
+
+        performance = {
+          byteCompileLua = {
+            enable = true;
+            nvimRuntime = true;
+            configs = true;
+            plugins = true;
+          };
         };
       };
     in flake-parts.lib.mkFlake { inherit inputs; } {
@@ -46,45 +88,3 @@
         };
     };
 }
-
-# {
-#   description = "A nixvim configuration";
-#
-#   inputs = {
-#     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-#     nixvim.url = "github:nix-community/nixvim";
-#     flake-parts.url = "github:hercules-ci/flake-parts";
-#   };
-#
-#   outputs = { nixvim, flake-parts, ... }@inputs:
-#     flake-parts.lib.mkFlake { inherit inputs; } {
-#       systems =
-#         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-#
-#       perSystem = { pkgs, system, ... }:
-#         let
-#           nixvimLib = nixvim.lib.${system};
-#           nixvim' = nixvim.legacyPackages.${system};
-#           nixvimModule = {
-#             inherit pkgs;
-#             module = import ./config; # import the module directly
-#             # You can use `extraSpecialArgs` to pass additional arguments to your module files
-#             extraSpecialArgs = {
-#               # inherit (inputs) foo;
-#             };
-#           };
-#           nvim = nixvim'.makeNixvimWithModule nixvimModule;
-#         in {
-#           checks = {
-#             # Run `nix flake check .` to verify that your config is not broken
-#             default =
-#               nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-#           };
-#
-#           packages = {
-#             # Lets you run `nix run .` to start nixvim
-#             default = nvim;
-#           };
-#         };
-#     };
-# }
