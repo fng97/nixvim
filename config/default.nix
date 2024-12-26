@@ -116,6 +116,19 @@
         silent = true;
       };
     }
+    {
+      mode = "n";
+      key = "<leader><leader>";
+      action.__raw = ''
+        function()
+          require("telescope.builtin").find_files()
+        end
+      '';
+      options = {
+        desc = "Find files";
+        silent = true;
+      };
+    }
   ];
 
   autoCmd = [{
@@ -132,16 +145,21 @@
     bufferline.enable = true;
     web-devicons.enable = true;
     nvim-autopairs.enable = true;
-    telescope.enable = true;
     which-key.enable = true;
-    snacks.enable = true;
 
-    # NOT WORKING
-    # conform-nvim.enable = true;
-    # nix.enable = true;
-    # zig.enable = true;
-    # clangd-extensions.enable = true;
-    # lsp-format.enable = true;
+    # NOT SET UP
+    telescope.enable = true; # grepper!
+    treesitter-refactor.enable = true;
+    lsp.enable = true;
+    conform-nvim.enable = true;
+    lsp-format.enable = true;
+    neo-tree.enable = true;
+    # gitsigns.enable = true;
+    snacks.enable = true; # TODO: do I need all that this packages?
+    mini.enable = true; # TODO: again, lots here, copy or limit what's bundled
+    nix.enable = true;
+    zig.enable = true;
+    clangd-extensions.enable = true;
   };
 
   performance = {
