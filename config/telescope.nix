@@ -14,7 +14,7 @@
           require("telescope.builtin").find_files({ hidden = true, no_ignore = true})
         end
       '';
-      options = { desc = "Find all files"; };
+      options.desc = "Find all files";
     }
     {
       mode = "n";
@@ -24,7 +24,7 @@
           require("telescope.builtin").find_files()
         end
       '';
-      options = { desc = "Find files"; };
+      options.desc = "Find files";
     }
   ];
 }

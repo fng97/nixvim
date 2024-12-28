@@ -3,11 +3,10 @@
 # - format on save
 # - copy lualine from LazyVim, get rid of dead space at the bottom
 # - clipboard support
-# - only show bufferline if more than one buffer open
 # - number of items in search
 
 {
-  imports = [ ./telescope.nix ./keymaps.nix ];
+  imports = [ ./telescope.nix ./keymaps.nix ./neo-tree.nix ];
 
   globals.mapleader = " ";
   globals.maplocalleader = " ";
@@ -47,7 +46,6 @@
     lsp.enable = true;
     conform-nvim.enable = true;
     lsp-format.enable = true;
-    neo-tree.enable = true;
     # gitsigns.enable = true;
     snacks.enable = true; # TODO: do I need all that this packages?
     mini.enable = true; # TODO: again, lots here, copy or limit what's bundled
