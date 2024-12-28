@@ -1,12 +1,11 @@
 # TODO:
 # 
-# - format on save
 # - copy lualine from LazyVim, get rid of dead space at the bottom
 # - clipboard support
 # - number of items in search
 
 {
-  imports = [ ./telescope.nix ./keymaps.nix ./neo-tree.nix ];
+  imports = [ ./telescope.nix ./keymaps.nix ./neo-tree.nix ./conform-nvim.nix ];
 
   globals.mapleader = " ";
   globals.maplocalleader = " ";
@@ -44,7 +43,6 @@
     # NOT SET UP
     treesitter-refactor.enable = true;
     lsp.enable = true;
-    conform-nvim.enable = true;
     lsp-format.enable = true;
     # gitsigns.enable = true;
     snacks.enable = true; # TODO: do I need all that this packages?
