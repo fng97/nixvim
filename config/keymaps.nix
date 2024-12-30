@@ -1,9 +1,25 @@
 {
-  keymaps = [{
-    mode = "n";
-    key = "<Esc>";
-    action = "<cmd>nohlsearch<CR>";
-  }];
+  keymaps = [
+    {
+      mode = "n";
+      key = "<Esc>";
+      action = "<cmd>nohlsearch<CR>";
+    }
+
+    # buffers
+    {
+      mode = "n";
+      key = "<leader>bd";
+      action.__raw = "function() Snacks.bufdelete() end";
+      options.desc = "Delete buffer";
+    }
+    {
+      mode = "n";
+      key = "<leader>bo";
+      action.__raw = "function() Snacks.bufdelete.other() end";
+      options.desc = "Delete other buffers";
+    }
+  ];
 
   # TODO: turn these into proper keybinds
   extraConfigLua = ''
@@ -38,12 +54,6 @@
     -- buffers
     map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
     map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-    map("n", "<leader>bd", function()
-      Snacks.bufdelete()
-    end, { desc = "Delete Buffer" })
-    map("n", "<leader>bo", function()
-      Snacks.bufdelete.other()
-    end, { desc = "Delete Other Buffers" })
     map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
     -- save file

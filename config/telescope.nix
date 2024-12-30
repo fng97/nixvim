@@ -19,11 +19,8 @@
     {
       mode = "n";
       key = "<leader><leader>";
-      action.__raw = ''
-        function()
-          require("telescope.builtin").find_files()
-        end
-      '';
+      action.__raw =
+        ''function() require("telescope.builtin").find_files() end'';
       options.desc = "Find files";
     }
   ];
