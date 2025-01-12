@@ -63,6 +63,10 @@
     map("v", "<", "<gv")
     map("v", ">", ">gv")
 
+    -- go to header/impl
+    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { desc = "Go to declaration" })
+    map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+
     -- new file
     map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
