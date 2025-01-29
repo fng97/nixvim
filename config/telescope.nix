@@ -1,9 +1,11 @@
 # TODO: add grepping with <leader>/
-{
+{ config, pkgs, ... }: {
   plugins = {
     telescope.enable = true;
     web-devicons.enable = true; # dependency
   };
+
+  extraPackages = [ pkgs.ripgrep pkgs.fd ];
 
   keymaps = [
     {
