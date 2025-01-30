@@ -40,17 +40,8 @@
     bufferline.settings.options.always_show_bufferline = false;
     nvim-autopairs.enable = true;
     which-key.enable = true;
-
-    # NOT SET UP
-    treesitter-refactor.enable = true;
-    lsp.enable = true;
-    lsp-format.enable = true;
-    # gitsigns.enable = true;
     snacks.enable = true; # TODO: do I need all that this packages?
     mini.enable = true; # TODO: again, lots here, copy or limit what's bundled
-    nix.enable = true;
-    zig.enable = true;
-    clangd-extensions.enable = true;
   };
 
   performance = {

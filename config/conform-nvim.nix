@@ -9,7 +9,7 @@
             return
           end
 
-          return { timeout_ms = 500, lsp_fallback = false }
+          return { timeout_ms = 500, lsp_fallback = true }
          end
       '';
 
