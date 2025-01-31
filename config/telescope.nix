@@ -1,4 +1,3 @@
-# TODO: add grepping with <leader>/
 { config, pkgs, ... }: {
   plugins = {
     telescope.enable = true;
@@ -24,6 +23,13 @@
       action.__raw =
         ''function() require("telescope.builtin").find_files() end'';
       options.desc = "Find files";
+    }
+    {
+      mode = "n";
+      key = "<leader>/";
+      action.__raw =
+        ''function() require("telescope.builtin").live_grep() end'';
+      options.desc = "Live grep";
     }
   ];
 }
