@@ -1,7 +1,8 @@
-{
+{ config, pkgs, ... }: {
   plugins.conform-nvim = {
     enable = true;
 
+    # TODO: set up a keybind to toggle auto-format
     settings = {
       format_on_save = ''
         function(bufnr)
@@ -20,15 +21,19 @@
         rust = [ "rustfmt" ];
         python = [ "black" ];
         nix = [ "nixfmt" ];
-        "_" = [ "trim_whitespace" "trim_newlines" ];
+        "_" = [ "prettier" "trim_whitespace" "trim_newlines" ];
       };
-
-      # formatters = {
-      #   shellcheck = { command = lib.getExe pkgs.shellcheck; };
-      #   shfmt = { command = lib.getExe pkgs.shfmt; };
-      #   shellharden = { command = lib.getExe pkgs.shellharden; };
-      #   squeeze_blanks = { command = lib.getExe' pkgs.coreutils "cat"; };
-      # };
     };
   };
+
+  extraPackages = with pkgs; [
+    shellcheck
+    shfmt
+    clang-tools
+    stylua
+    rustfmt
+    black
+    nixfmt-classic
+    nodePackages.prettier
+  ];
 }
