@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   plugins = {
     telescope.enable = true;
     web-devicons.enable = true; # dependency

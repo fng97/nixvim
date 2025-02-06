@@ -1,12 +1,17 @@
 # TODO:
 # 
-# - copy lualine from LazyVim, get rid of dead space at the bottom
 # - clipboard support
 # - number of items in search
 # - fix C++ commenting
 
 {
-  imports = [ ./telescope.nix ./keymaps.nix ./neo-tree.nix ./conform-nvim.nix ];
+  imports = [
+    ./telescope.nix
+    ./keymaps.nix
+    ./neo-tree.nix
+    ./conform-nvim.nix
+    ./lsp.nix
+  ];
 
   globals.mapleader = " ";
   globals.maplocalleader = " ";

@@ -1,5 +1,4 @@
-{ config, pkgs, ... }: {
-{
+{ pkgs, ... }: {
   plugins = {
     lsp.enable = true;
     lsp-format.enable = true;
