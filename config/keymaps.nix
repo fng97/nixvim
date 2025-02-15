@@ -21,7 +21,6 @@
     }
   ];
 
-  # TODO: turn these into proper keybinds
   extraConfigLua = ''
     local map = vim.keymap.set
 
@@ -30,6 +29,10 @@
     map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
     map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
     map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+    -- center on page up/down
+    map("n", "<C-u>", "<C-u>zz")
+    map("n", "<C-d>", "<C-d>zz")
 
     -- Move to window using the <ctrl> hjkl keys
     map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
@@ -92,5 +95,13 @@
     map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
     map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
     map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+    -- system clipboard
+    vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard (motion, e.g. <leader>yib)" })
+    vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard after cursor" })
+    vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true, silent = true, desc = "Paste from system clipboard before cursor" })
+    vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true, desc = "Yank selection to system clipboard" })
+    vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard after cursor" })
+    vim.api.nvim_set_keymap('v', '<leader>P', '"+P', { noremap = true, silent = true, desc = "Paste from system clipboard before cursor" })
   '';
 }
