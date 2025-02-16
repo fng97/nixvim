@@ -17,11 +17,16 @@
       formatters_by_ft = {
         bash = [ "shellcheck" "shfmt" ];
         cpp = [ "clang-format" ];
+        cmake = [ "cmake_format" ];
         lua = [ "stylua" ];
         rust = [ "rustfmt" ];
         python = [ "black" ];
         nix = [ "nixfmt" ];
-        "_" = [ "prettier" "trim_whitespace" "trim_newlines" ];
+        markdown = [ "prettier" ];
+        json = [ "prettier" ];
+        yaml = [ "prettier" ];
+        toml = [ "prettier" ];
+        "_" = [ "trim_whitespace" "trim_newlines" ];
       };
     };
   };
@@ -30,6 +35,7 @@
     shellcheck
     shfmt
     clang-tools
+    cmake-format
     stylua
     rustfmt
     black
