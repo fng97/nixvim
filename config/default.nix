@@ -1,9 +1,3 @@
-# TODO:
-# 
-# - clipboard support
-# - number of items in search
-# - fix C++ commenting
-
 {
   imports = [
     ./telescope.nix
@@ -47,6 +41,7 @@
     which-key.enable = true;
     snacks.enable = true; # TODO: do I need all that this packages?
     mini.enable = true; # TODO: again, lots here, copy or limit what's bundled
+    copilot-lua.enable = true;
   };
 
   performance = {
