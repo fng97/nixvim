@@ -4,6 +4,7 @@
     lsp-format.enable = true;
 
     lsp.servers = {
+      pylsp.enable = true;
       ruff.enable = true;
       cmake.enable = true;
       clangd.enable = true;
