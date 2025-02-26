@@ -1,4 +1,5 @@
 {
+  # TODO: rebind <C-a/x> to something like <C-k/j> (or h/l)
   keymaps = [
     {
       mode = "n";
