@@ -10,6 +10,7 @@
       clangd.enable = true;
       nixd.enable = true;
       zls.enable = true;
+      rust-analyzer.enable = true;
     };
   };
 
