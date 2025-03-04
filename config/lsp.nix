@@ -11,6 +11,8 @@
       nixd.enable = true;
       zls.enable = true;
       rust-analyzer.enable = true;
+      rust_analyzer.installCargo = true;
+      rust_analyzer.installRustc = true;
     };
   };
 
