@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./telescope.nix
     ./keymaps.nix
@@ -10,7 +10,12 @@
   globals.mapleader = " ";
   globals.maplocalleader = " ";
 
-  colorschemes.gruvbox.enable = true;
+  extraConfigLua = ''
+    vim.opt.termguicolors = false
+    vim.cmd([[colorscheme dim]])
+  '';
+
+  extraPlugins = [ pkgs.vimPlugins.vim-dim ];
 
   opts = {
     number = true;
