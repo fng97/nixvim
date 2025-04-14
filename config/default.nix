@@ -10,7 +10,11 @@
   globals.mapleader = " ";
   globals.maplocalleader = " ";
 
-  colorschemes.gruvbox.enable = true;
+  colorschemes.catppuccin = {
+    enable = true;
+    settings.background.dark = "frappe";
+    settings.background.light = "latte";
+  };
 
   opts = {
     number = true;
